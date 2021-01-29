@@ -14,6 +14,15 @@
     "source_ami": "{{user `source_ami`}}",
     "ami_name": "bb2-platinum-amzn2-{{isotime \"20060102030405\"}}",
     "ssh_pty": true,
+    "launch_block_device_mappings": [
+      {
+        "device_name": "/dev/xvda",
+        "volume_type": "gp2",
+        "volume_size": 30,
+        "delete_on_termination": true
+
+      }
+    ],
     "tags": {
       "Name": "bb2-platinum-amzn2-{{isotime \"20060102030405\"}}"
     }
