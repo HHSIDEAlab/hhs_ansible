@@ -1,11 +1,11 @@
 {
   "variables": {
-    "source_ami": "ami-06d31fda5cf40fef5",
+    "source_ami": "ami-020dd1c77daac1ae5",
     "vault_password_file": "/vault_pw.txt",
     "subnet_id": "subnet-81ecfbab",
     "release_version": "master",
     "git_branch": "master",
-    "deployment_branch": "master"
+    "deployment_branch": "njdister/amzn2-exploration"
   },
   "builders": [{
     "type": "amazon-ebs",
