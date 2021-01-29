@@ -2,7 +2,7 @@
 Description=uWSGI - Blue Button 2.0
 
 [Service]
-ExecStart=/sbin/uwsgi --emperor /etc/uwsgi/vassals
+ExecStart=/usr/local/bin/uwsgi --emperor /etc/uwsgi/vassals
 Restart=always
 KillSignal=SIGQUIT
 Type=notify
