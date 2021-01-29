@@ -1,7 +1,7 @@
 {
   "variables": {
-    "source_ami": "",
-    "vault_password_file": "",
+    "source_ami": "ami-06d31fda5cf40fef5",
+    "vault_password_file": "/vault_pw.txt",
     "subnet_id": "subnet-81ecfbab",
     "release_version": "master",
     "git_branch": "master",

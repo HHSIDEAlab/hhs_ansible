@@ -21,6 +21,9 @@
           - gcc
           - git
           - python3-devel
+          - postgresql-devel
+          - zlib-devel
+          - libjpeg-turbo-devel
           - nginx
           - ansible
           - amazon-cloudwatch-agent
