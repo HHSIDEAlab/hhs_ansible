@@ -45,8 +45,8 @@ css_dir: "bluebutton-css"
 
 #Python Settings
 python_bin_dir: "/usr/bin/"
-python_ver: "3.6"
-python_ver_full: "{{ python_ver }}.6"
+python_ver: "3.7"
+python_ver_full: "{{ python_ver }}.9"
 app_py_virtual_env: "/var/virtualenv/{{ project_dir }}"
 
 # Virtual Environment base location - slash terminated
