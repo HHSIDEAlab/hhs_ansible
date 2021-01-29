@@ -13,11 +13,11 @@
     - "./../../vars/common.yml"
     - "./../../vars/all_var.yml"
   tasks:
-    - name: apply security patches
+    - name: Apply security patches
       become_user: "{{ remote_admin_account }}"
       become: yes
-      command: yum update-minimal --security -y
-    - name: install deps
+      command: "yum update-minimal --security -y"
+    - name: Install dependencies
       become: yes
       become_user: "{{ remote_admin_account }}"
       yum:
@@ -31,12 +31,20 @@
           - nginx
           - ansible
           - amazon-cloudwatch-agent
-    - name: install uwsgi via pip
+    - name: Install uwsgi via pip
       become: yes
       become_user: "{{ remote_admin_account }}"
       pip:
         name: uwsgi
         executable: pip3
         umask: "0022"
-  roles:
-    - ../../roles/cloudwatch_agent_base
+    - name: Copy cloudwatch agent base config file
+      become_user: "{{ remote_admin_account }}"
+      become: yes
+      template:
+        src: templates/cwagent.json.j2
+        dest: /tmp/cwagent-base.json
+    - name: Start cloudwatch agent with base config
+      become_user: "{{ remote_admin_account }}"
+      become: yes
+      shell: "amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -c file:/tmp/cwagent-base.json -s"
