@@ -23,4 +23,5 @@
     - ../../roles/app_logs
     - ../../roles/app_install
     - ../../roles/env_config
-    - ../../roles/semanage_apps
+    # SELinux disabled in Amazon Linux 2
+    # - ../../roles/semanage_apps

@@ -15,10 +15,10 @@
     "subnet_id": "{{user `subnet_id`}}",
     "associate_public_ip_address": "false",
     "source_ami": "{{user `source_ami`}}",
-    "ami_name": "bb2-{{user `git_branch`}}-{{isotime \"20060102030405\"}}",
+    "ami_name": "bb2-amzn2-{{user `git_branch`}}-{{isotime \"20060102030405\"}}",
     "ssh_pty": true,
     "tags": {
-        "Name": "bb2-{{user `git_branch`}}-{{isotime \"20060102030405\"}}",
+        "Name": "bb2-amzn2-{{user `git_branch`}}-{{isotime \"20060102030405\"}}",
         "Application": "BlueButton",
         "Function": "AppServer",
         "Layer":  "APP",

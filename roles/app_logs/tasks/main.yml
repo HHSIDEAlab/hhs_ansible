@@ -27,14 +27,15 @@
     - admin_access.log
     - perf_mon.log
 
-- name: "Set permissions for SELinux"
-  become_user: "{{ remote_admin_account }}"
-  become: yes
-  sefcontext:
-    target: "{{ app_log_dir }}(/.*)?"
-    setype: httpd_sys_content_t
-    state: present
-  ignore_errors: True
+# SELinux disabled in Amazon Linux 2
+# - name: "Set permissions for SELinux"
+#   become_user: "{{ remote_admin_account }}"
+#   become: yes
+#   sefcontext:
+#     target: "{{ app_log_dir }}(/.*)?"
+#     setype: httpd_sys_content_t
+#     state: present
+#   ignore_errors: True
 
 - name: "Setup log rotation for pyapps logs"
   become_user: "{{ remote_admin_account }}"

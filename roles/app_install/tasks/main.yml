@@ -81,7 +81,17 @@
 
 - debug: var=out.stdout_lines
 
-- import_tasks: ./../appherd/roles/create_certstore/tasks/main.yml
+# Use task directly rather than importing from deprecated location
+- name: "Create a back-end app certstore"
+  become_user: "{{ remote_admin_account }}"
+  become: yes
+  file:
+    dest: "{{ app_pyapp_home }}/certstore"
+    mode: 0750
+    owner: "{{ app_pyapps_user }}"
+    group: "{{ app_group }}"
+    recurse: yes
+    state: directory
 
 - name: "Create run dir for service .sock/.pid files"
   become_user: "{{ remote_admin_account }}"

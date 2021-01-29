@@ -1,0 +1,33 @@
+---
+- name: Provision server
+  hosts: all
+  remote_user: ec2-user
+  gather_facts: no
+  vars:
+    ansible_ssh_pipelining: no
+    azone: "az1"
+    sub_zone: "app"
+    sg_zone: "appserver"
+    splunk_target_layer: "app"
+  vars_files:
+    - "./../../vars/common.yml"
+    - "./../../vars/all_var.yml"
+  tasks:
+    - name: install deps
+      become: yes
+      become_user: "{{ remote_admin_account }}"
+      yum:
+        name:
+          - gcc
+          - git
+          - python3-devel
+          - nginx
+          - ansible
+          - amazon-cloudwatch-agent
+    - name: install uwsgi via pip
+      become: yes
+      become_user: "{{ remote_admin_account }}"
+      pip:
+        name: uwsgi
+        executable: pip3
+        umask: "0022"
