@@ -13,6 +13,10 @@
     - "./../../vars/common.yml"
     - "./../../vars/all_var.yml"
   tasks:
+    - name: apply security patches
+      become_user: "{{ remote_admin_account }}"
+      become: yes
+      command: yum update-minimal --security -y
     - name: install deps
       become: yes
       become_user: "{{ remote_admin_account }}"
@@ -34,3 +38,5 @@
         name: uwsgi
         executable: pip3
         umask: "0022"
+  roles:
+    - ../../roles/cloudwatch_agent_base

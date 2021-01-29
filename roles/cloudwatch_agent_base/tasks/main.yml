@@ -6,13 +6,14 @@
     src: templates/cwagent.json.j2
     dest: /tmp/cwagent-base.json
 
-- name: Install cloudwatch agent from RPM
-  become_user: "{{ remote_admin_account }}"
-  become: yes
-  yum:
-    name: https://s3.amazonaws.com/amazoncloudwatch-agent/redhat/amd64/latest/amazon-cloudwatch-agent.rpm
-    state: present
-    disable_gpg_check: true
+# Installed via yum in Amazon Linux 2
+# - name: Install cloudwatch agent from RPM
+#   become_user: "{{ remote_admin_account }}"
+#   become: yes
+#   yum:
+#     name: https://s3.amazonaws.com/amazoncloudwatch-agent/redhat/amd64/latest/amazon-cloudwatch-agent.rpm
+#     state: present
+#     disable_gpg_check: true
 
 - name: Start cloudwatch agent with base config
   become_user: "{{ remote_admin_account }}"
